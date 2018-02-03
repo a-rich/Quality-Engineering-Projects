@@ -1,0 +1,34 @@
+Directions
+==============================================================================
+
+You will write a short (quite) program that - given three integer values x, y
+and z (as lengths of the sides of the triangle) that
+
+Will determine if x, y, and z form a triangle
+If yes then it will determine if the triangle is
+Equilateral
+Isosceles or
+Scalene
+The program should be written with testing ease in mind. Pay attention to how
+it is documented, commented, structured etc. This program may sound trivial
+which makes it difficult to elaborate on documentation.
+
+Write as many test cases as you can think of. Documenting test cases is
+important and you can follow the format given in the lecture slides but put the
+test cases in a nice tabular format. Make sure to add a row that explains the
+reason a particular test is written.
+
+I am not very fond of setting definitive numbers as goals such as a number of
+pages for a report or a number of test cases for this assignment. You should
+write a reasonable number of test cases. When we grade, we will look for
+whether the number adequately covers enough scenarios or covers questions that
+arise while we think about testing this program.
+
+We will revisit this very same program and write test cases for it again
+towards the end of the semester. At that time we will make use of all the
+concepts we studied and compare with what we are doing now. It will be
+interesting!
+
+Note: This is a team assignment (as most assignments in this class are) and
+only one submission per team should be sufficient. Please do all work in 12
+point font and double space.
