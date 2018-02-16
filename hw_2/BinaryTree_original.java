@@ -1,13 +1,8 @@
-
 /*
- * Title: Java Program to Implement Binary Tree
- * Author: Manish Bhojasia
- * Availability: http://www.sanfoundry.com/java-program-implement-binary-tree/
- *
- * Compile: `javac BinaryTree.java`
- * Run: `java -ea BinaryTree`
+ *  Java program to implement a binary tree
  */
 
+import java.util.Scanner;
 
 /*
  * Class for a binary tree's node. Contains reference IDs to the LEFT and RIGHT
@@ -87,7 +82,7 @@ class BTNode {
 
 /* Class to implement the abstract data type binary tree. */
 class BT {
-	BTNode root;    // ROOT BTNODE of the binary tree
+	private BTNode root;    // ROOT BTNODE of the binary tree
 
 	/* Constructor that initializes this binary tree's ROOT node to null. */
 	public BT() {
@@ -180,128 +175,110 @@ class BT {
 				return true;
 		return false;
 	}
+
+	/* Method for inorder traversal of the tree. */
+	public void inorder() {
+		inorder(root);
+	}
+
+    /* Method for recursive inorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
+	private void inorder(BTNode r) {
+		if (r != null) {
+			inorder(r.getLeft());
+			System.out.print(r.getData() + " ");
+			inorder(r.getRight());
+		}
+	}
+
+	/* Method for preorder traversal of the tree. */
+	public void preorder() {
+		preorder(root);
+	}
+
+    /* Method for recursive preorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
+	private void preorder(BTNode r) {
+		if (r != null) {
+			System.out.print(r.getData() + " ");
+			preorder(r.getLeft());
+			preorder(r.getRight());
+		}
+	}
+
+	/* Method for postorder traversal of the tree. */
+	public void postorder() {
+		postorder(root);
+	}
+
+    /* Method for recursive postorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
+	private void postorder(BTNode r) {
+		if (r != null) {
+			postorder(r.getLeft());
+			postorder(r.getRight());
+			System.out.print(r.getData() + " ");
+		}
+	}
 }
 
 /* Class used as a test driver for this binary tree program. */
 public class BinaryTree {
 
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
 
-        /* Test cases must test the following functionalities:
-         *     Class BTNode:
-         *         - both constructors (1), (2)
-         *         - set/get left/right children (3), (4), (5), (6)
-         *         - set/get data (7), (8)
-         *     Class BT:
-         *         - constructor (9)
-         *         - is empty (10)
-         *         - insert (11)
-         *         - count nodes (12)
-         *         - search (13)
-         *
-         *  NOTE: private methods for insert, countNodes, and search are
-         *  implicitly tested by testing the public versions of these methods.
-         */
+		/* Instantiating a BT object. */
+		BT bt = new BT();
 
+		/* Perform tree operations */
+		System.out.println("Binary Tree Test\n");
+		char ch;
 
-        /*
-         * Test cases for the BTNODE class.
-         */
+		do {
+			System.out.println("\nBinary Tree Operations\n");
+			System.out.println("1. insert ");
+			System.out.println("2. search");
+			System.out.println("3. count nodes");
+			System.out.println("4. check empty\n");
 
+			int choice = scan.nextInt();
+			switch (choice) {
+                case 1:
+                    System.out.println("\nEnter integer element to insert");
+                    bt.insert(scan.nextInt());
+                    break;
+                case 2:
+                    System.out.println("\nEnter integer element to search");
+                    System.out.println("Search result : " + bt.search(scan.nextInt()));
+                    break;
+                case 3:
+                    System.out.println("\nNodes = " + bt.countNodes());
+                    break;
+                case 4:
+                    System.out.println("\nEmpty status = " + bt.isEmpty());
+                    break;
+                default:
+                    System.out.println("\nWrong entry \n ");
+                    break;
+			}
 
-		/*
-         * Instantiating an empty BTNODE object.
-         * Test cases: (1)
-         */
-        BTNode node = new BTNode();
-        assert node.left == null && node.right == null :
-                "BTNODE children are not null";
-        assert node.data == 0 : "BTNODE DATA is not 0";
+			/* Display tree */
+			System.out.print("\nPost-order: ");
+			bt.postorder();
+			System.out.print("\nPre-order: ");
+			bt.preorder();
+			System.out.print("\nIn-order: ");
+			bt.inorder();
 
-		/*
-         * Instantiating a BTNODE object with a populated DATA field.
-         * Test cases: (2)
-         */
-        int val = 3;
-        node = new BTNode(val);
-        assert node.left == null && node.right == null :
-                "BTNODE children are not null";
-        assert node.data == val : "BTNODE DATA was not set to " + val;
-
-        /*
-         * Setting and getting the LEFT child of a BTNODE.
-         * Test cases: (2), (3), (4), (8)
-         */
-        val = 2;
-        BTNode left_child = new BTNode(val);
-        node.setLeft(left_child);
-        assert node.getLeft() == left_child :
-                "Parent node's LEFT child is not equal to LEFT_CHILD";
-        assert node.getLeft().getData() == val :
-                "LEFT child's DATA value was not set properly to " + val;
-
-        /*
-         * Setting and getting the RIGHT child of a BTNODE.
-         * Test cases: (2), (5), (6), (8)
-         */
-        val = 4;
-        BTNode right_child = new BTNode(val);
-        node.setRight(right_child);
-        assert node.getRight() == right_child :
-                "Parent node's RIGHT child is not equal to RIGHT_CHILD";
-        assert node.getRight().getData() == val :
-                "RIGHT child's DATA value was not set properly to " + val;
-
-        /*
-         * Setting the DATA of a BTNODE.
-         * Test cases: (7), (8)
-         */
-        val = 1;
-        int prev = node.getData();
-        node.setData(val);
-        assert node.getData() != prev : "BTNODE's DATA was not set properly";
-
-
-        /*
-         * Test cases for the BT class.
-         */
-
-
-        /*
-         * Instantiating a BT object.
-         * Test cases: (9)
-         */
-        BT tree = new BT();
-        assert tree.root == null : "ROOT of BT is not null";
-
-        /*
-         * Checking if the tree is empty before and after inserting a BTNODE.
-         * Test cases: (10)
-         */
-        assert tree.isEmpty() == true :
-                "BT is not empty when it should be empty";
-        tree.insert(node.getData());
-        assert tree.isEmpty() == false :
-                "BT is empty when it should not be empty";
-
-        /*
-         * Checking if the inserted BTNODE is present in the tree.
-         * Test cases: (11), (13)
-         */
-        BTNode other_node = new BTNode(5);
-        assert tree.search(other_node.getData()) == false :
-                "BT should not yet contain OTHER_NODE";
-        tree.insert(other_node.getData());
-        assert tree.search(other_node.getData()) == true :
-                "BT should contain OTHER_NODE but it does not";
-
-        /*
-         * Counting the number of nodes in BT.
-         * Test cases: (12)
-         */
-        int initial_count = tree.countNodes();
-        tree.insert(7);
-        assert tree.countNodes() == ++initial_count :
-                "countNodes did not return the proper amount of nodes";
+			System.out.println("\n\nDo you want to continue (Type y or n) \n");
+			ch = scan.next().charAt(0);
+		} while (ch == 'Y' || ch == 'y');
 	}
 }
