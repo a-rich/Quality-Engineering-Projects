@@ -214,9 +214,17 @@ public class BinaryTree {
          * Test cases: (1)
          */
         BTNode node = new BTNode();
-        assert node.left == null && node.right == null :
-                "BTNODE children are not null";
-        assert node.data == 0 : "BTNODE DATA is not 0";
+        try {
+            assert node.left == null && node.right == null :
+                    "BTNODE children are not null";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
+        try {
+            assert node.data == 0 : "BTNODE DATA is not 0";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
 		/*
          * Instantiating a BTNODE object with a populated DATA field.
@@ -224,9 +232,18 @@ public class BinaryTree {
          */
         int val = 3;
         node = new BTNode(val);
-        assert node.left == null && node.right == null :
-                "BTNODE children are not null";
-        assert node.data == val : "BTNODE DATA was not set to " + val;
+        try {
+            assert node.left == null && node.right == null :
+                    "BTNODE children are not null";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
+        try {
+            assert node.data == val :
+                    "BTNODE DATA was not initialized to " + val;
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Setting and getting the LEFT child of a BTNODE.
@@ -235,10 +252,18 @@ public class BinaryTree {
         val = 2;
         BTNode left_child = new BTNode(val);
         node.setLeft(left_child);
-        assert node.getLeft() == left_child :
-                "Parent node's LEFT child is not equal to LEFT_CHILD";
-        assert node.getLeft().getData() == val :
-                "LEFT child's DATA value was not set properly to " + val;
+        try {
+            assert node.getLeft() == left_child :
+                    "Parent node's LEFT child is not equal to LEFT_CHILD";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
+        try {
+            assert node.getLeft().getData() == val :
+                    "LEFT child's DATA value was not set properly to " + val;
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Setting and getting the RIGHT child of a BTNODE.
@@ -247,10 +272,18 @@ public class BinaryTree {
         val = 4;
         BTNode right_child = new BTNode(val);
         node.setRight(right_child);
-        assert node.getRight() == right_child :
-                "Parent node's RIGHT child is not equal to RIGHT_CHILD";
-        assert node.getRight().getData() == val :
-                "RIGHT child's DATA value was not set properly to " + val;
+        try {
+            assert node.getRight() == right_child :
+                    "Parent node's RIGHT child is not equal to RIGHT_CHILD";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
+        try {
+            assert node.getRight().getData() == val :
+                    "RIGHT child's DATA value was not set properly to " + val;
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Setting the DATA of a BTNODE.
@@ -259,7 +292,11 @@ public class BinaryTree {
         val = 1;
         int prev = node.getData();
         node.setData(val);
-        assert node.getData() != prev : "BTNODE's DATA was not set properly";
+        try {
+            assert node.getData() != prev : "BTNODE's DATA was not set properly";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
 
         /*
@@ -272,28 +309,48 @@ public class BinaryTree {
          * Test cases: (9)
          */
         BT tree = new BT();
-        assert tree.root == null : "ROOT of BT is not null";
+        try {
+            assert tree.root == null : "ROOT of BT is not null";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Checking if the tree is empty before and after inserting a BTNODE.
          * Test cases: (10)
          */
-        assert tree.isEmpty() == true :
-                "BT is not empty when it should be empty";
+        try {
+            assert tree.isEmpty() == true :
+                    "BT is not empty when it should be empty";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
         tree.insert(node.getData());
-        assert tree.isEmpty() == false :
-                "BT is empty when it should not be empty";
+        try {
+            assert tree.isEmpty() == false :
+                    "BT is empty when it should not be empty";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Checking if the inserted BTNODE is present in the tree.
          * Test cases: (11), (13)
          */
         BTNode other_node = new BTNode(5);
-        assert tree.search(other_node.getData()) == false :
-                "BT should not yet contain OTHER_NODE";
+        try {
+            assert tree.search(other_node.getData()) == false :
+                    "BT should not yet contain OTHER_NODE";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
         tree.insert(other_node.getData());
-        assert tree.search(other_node.getData()) == true :
-                "BT should contain OTHER_NODE but it does not";
+        try {
+            assert tree.search(other_node.getData()) == true :
+                    "BT should contain OTHER_NODE but it does not";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 
         /*
          * Counting the number of nodes in BT.
@@ -301,7 +358,11 @@ public class BinaryTree {
          */
         int initial_count = tree.countNodes();
         tree.insert(7);
-        assert tree.countNodes() == ++initial_count :
-                "countNodes did not return the proper amount of nodes";
+        try {
+            assert tree.countNodes() == ++initial_count :
+                    "countNodes did not return the proper amount of nodes";
+        } catch (AssertionError e) {
+            System.out.println(e);
+        }
 	}
 }
