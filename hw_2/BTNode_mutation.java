@@ -67,8 +67,8 @@ class BTNode {
      * @return  the BTNODE referenced by the LEFT child
      */
 	public BTNode getLeft() {
-		return left;
-		//return right;
+		//return left;
+		return right;
 	}
 
 	/* Method to get the reference ID of the RIGHT node.
@@ -76,8 +76,8 @@ class BTNode {
      * @return  the BTNODE referenced by the RIGHT child
      */
 	public BTNode getRight() {
-		return left;
-		//return right;
+		//return left;
+		return right;
 	}
 
 	/* Method to set the DATA of this BTNODE.

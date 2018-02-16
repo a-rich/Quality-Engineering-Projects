@@ -51,10 +51,14 @@ public class TestDriver {
                     "BTNODE children are not null";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         try {
             assert node.data == 0 : "BTNODE DATA is not 0";
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -69,11 +73,15 @@ public class TestDriver {
                     "BTNODE children are not null";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         try {
             assert node.data == val :
                     "BTNODE DATA was not initialized to " + val;
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -89,11 +97,15 @@ public class TestDriver {
                     "Parent node's LEFT child is not equal to LEFT_CHILD";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         try {
             assert node.getLeft().getData() == val :
                     "LEFT child's DATA value was not set properly to " + val;
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -109,11 +121,15 @@ public class TestDriver {
                     "Parent node's RIGHT child is not equal to RIGHT_CHILD";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         try {
             assert node.getRight().getData() == val :
                     "RIGHT child's DATA value was not set properly to " + val;
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -127,6 +143,8 @@ public class TestDriver {
         try {
             assert node.getData() != prev : "BTNODE's DATA was not set properly";
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -145,6 +163,8 @@ public class TestDriver {
             assert tree.root == null : "ROOT of BT is not null";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
         /*
@@ -156,12 +176,16 @@ public class TestDriver {
                     "BT is not empty when it should be empty";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
         tree.insert(node.getData());
         try {
             assert tree.isEmpty() == false :
                     "BT is empty when it should not be empty";
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -182,6 +206,8 @@ public class TestDriver {
                     "BT should contain OTHER_NODE but it does not";
         } catch (AssertionError e) {
             System.out.println(e);
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
         /*
@@ -194,6 +220,8 @@ public class TestDriver {
             assert tree.countNodes() == ++initial_count :
                     "countNodes did not return the proper amount of nodes";
         } catch (AssertionError e) {
+            System.out.println(e);
+        } catch (Exception e) {
             System.out.println(e);
         }
 	}
