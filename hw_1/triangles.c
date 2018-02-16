@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 #define EXPAND_ARGS(args) args[0], args[1], args[2]
 
@@ -55,11 +56,17 @@ int main() {
      * Prints whether or not the sides form a triangle for each test.
      */
 
-    int tests[4][3] = {
-        {2, 4, 5},
-        {2, 5, 5},
-        {5, 5, 5},
-        {2, 3, 5}
+    int tests[10][3] = {
+      {3, 4, 4},        // isosceles
+      {2, 3, 4},        // scalene
+      {4, 4, 4},        // equilateral
+      {2, 3, 5},        // fail since 5 = 2 + 3
+      {1, 3, 5},        // fail since 5 > 1 + 3
+      {-1, 5, 4},       // fail since negative
+      {-3, -2, 7},      // fail since negative
+      {-2, -3, -4},     // fail since negative
+      {2, 3, INT_MIN},  // fail
+      {3, INT_MAX, 5},  // fail
     };
 
     for (int i=0; i < sizeof(tests)/sizeof(tests[0]); i++)
