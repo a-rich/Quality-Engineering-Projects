@@ -4,8 +4,13 @@
  * Author: Manish Bhojasia
  * Availability: http://www.sanfoundry.com/java-program-implement-binary-tree/
  *
- * Compile: `javac BTNode.java BinaryTree.java TestDriver.java`
- * Run: `java -ea TestDriver`
+ * Run tests:
+ *     Compile: `javac BTNode.java BinaryTree.java TestDriver.java`
+ *     Run: `java -ea TestDriver`
+ *
+ * Run mutation tests:
+ *     Compile: `javac BTNode_mutation.java BinaryTree_mutation.java TestDriver.java`
+ *     Run: `java -ea TestDriver`
  */
 
 

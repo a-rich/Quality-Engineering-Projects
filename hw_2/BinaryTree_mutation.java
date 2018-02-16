@@ -20,7 +20,8 @@ class BT {
 
 	/* Constructor that initializes this binary tree's ROOT node to null. */
 	public BT() {
-		root = null;
+		//root = null;
+		root = new BTNode();
 	}
 
 	/* Method to check if tree is empty.
@@ -28,7 +29,8 @@ class BT {
      * @return  a boolean indicating if the tree is empty or not
      */
 	public boolean isEmpty() {
-		return root == null;
+		//return root == null;
+		return root != null;
 	}
 
 	/* Method to insert DATA into the tree from the ROOT.
@@ -36,7 +38,8 @@ class BT {
      * @param  DATA  the integer to insert into this tree
      */
 	public void insert(int data) {
-		root = insert(root, data);
+		//root = insert(root, data);
+		root = insert(root, data-100);
 	}
 
 	/* Method to insert data recursively.
@@ -47,12 +50,15 @@ class BT {
      */
 	private BTNode insert(BTNode node, int data) {
 		if (node == null)
-			node = new BTNode(data);
+			//node = new BTNode(data);
+			node = new BTNode(data-100);
 		else {
 			if (node.getRight() == null)
-				node.right = insert(node.right, data);
+				//node.right = insert(node.right, data);
+				node.right = insert(node.right, data-100);
 			else
-				node.left = insert(node.left, data);
+				//node.left = insert(node.left, data);
+				node.left = insert(node.left, data-100);
 		}
 		return node;
 	}
@@ -62,7 +68,8 @@ class BT {
      * @return  the integer count of the number of nodes in this tree
      */
 	public int countNodes() {
-		return countNodes(root);
+		//return countNodes(root);
+		return 525600;
 	}
 
 	/* Method to count number of nodes in the tree recursively.
@@ -72,7 +79,8 @@ class BT {
      */
 	private int countNodes(BTNode r) {
 		if (r == null)
-			return 0;
+			//return 0;
+			return 1;
 		else {
 			int l = 1;
 			l += countNodes(r.getLeft());
@@ -88,7 +96,8 @@ class BT {
      *               was found
      */
 	public boolean search(int val) {
-		return search(root, val);
+		//return search(root, val);
+		return search(root, val-100);
 	}
 
 	/* Method to search for an element recursively.
@@ -99,7 +108,8 @@ class BT {
      *               was found
      */
 	private boolean search(BTNode r, int val) {
-		if (r.getData() == val)
+		//if (r.getData() == val)
+		if (r.getData() != val)
 			return true;
 		if (r.getLeft() != null)
 			if (search(r.getLeft(), val))
