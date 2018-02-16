@@ -1,80 +1,116 @@
-
 /*
- *  Java Program to Implement Binary Tree
+ *  Java program to implement a binary tree
  */
 
 import java.util.Scanner;
 
-/* Class BTNode */
+/*
+ * Class for a binary tree's node. Contains reference IDs to the LEFT and RIGHT
+ * children of this node and a class variable DATA containing an integer.
+ */
 class BTNode {
-	BTNode left, right;
-	int data;
+	BTNode left, right;   // LEFT and RIGHT BTNODE reference IDs
+	int data;             // DATA value to be stored in this BTNODE
 
-	/* Constructor */
+	/* Constructor that does not specify DATA upon object initialization. */
 	public BTNode() {
 		left = null;
 		right = null;
 		data = 0;
 	}
 
-	/* Constructor */
+	/* Constructor that does specify DATA upon object initialization.
+     *
+     * @param  N  the integer DATA value to associate with this node
+     */
 	public BTNode(int n) {
 		left = null;
 		right = null;
 		data = n;
 	}
 
-	/* Function to set left node */
+	/* Method to set the LEFT child reference ID to another BTNODE.
+     *
+     * @param  N  the BTNODE reference ID to associate with this node's LEFT
+     *            child
+     */
 	public void setLeft(BTNode n) {
 		left = n;
 	}
 
-	/* Function to set right node */
+	/* Method to set the RIGHT child reference ID to another BTNODE.
+     *
+     * @param  N  the BTNODE reference ID to associate with this node's RIGHT
+     *            child
+     */
 	public void setRight(BTNode n) {
 		right = n;
 	}
 
-	/* Function to get left node */
+	/* Method to get the reference ID of the LEFT node.
+     *
+     * @return  the BTNODE referenced by the LEFT child
+     */
 	public BTNode getLeft() {
 		return left;
 	}
 
-	/* Function to get right node */
+	/* Method to get the reference ID of the RIGHT node.
+     *
+     * @return  the BTNODE referenced by the RIGHT child
+     */
 	public BTNode getRight() {
 		return right;
 	}
 
-	/* Function to set data to node */
+	/* Method to set the DATA of this BTNODE.
+     *
+     * @param  d  the DATA to associate with this BTNODE
+     */
 	public void setData(int d) {
 		data = d;
 	}
 
-	/* Function to get data from node */
+	/* Method to get the DATA of this BTNODE.
+     *
+     * @return  the integer DATA associated with this BTNODE
+     */
 	public int getData() {
 		return data;
 	}
 }
 
-/* Class BT */
+/* Class to implement the abstract data type binary tree. */
 class BT {
-	private BTNode root;
+	private BTNode root;    // ROOT BTNODE of the binary tree
 
-	/* Constructor */
+	/* Constructor that initializes this binary tree's ROOT node to null. */
 	public BT() {
 		root = null;
 	}
 
-	/* Function to check if tree is empty */
+	/* Method to check if tree is empty.
+     *
+     * @return  a boolean indicating if the tree is empty or not
+     */
 	public boolean isEmpty() {
 		return root == null;
 	}
 
-	/* Functions to insert data */
+	/* Method to insert DATA into the tree from the ROOT.
+     *
+     * @param  DATA  the integer to insert into this tree
+     */
 	public void insert(int data) {
 		root = insert(root, data);
 	}
 
-	/* Function to insert data recursively */
+	/* Method to insert data recursively.
+     *
+     * @param   NODE    a BTNODE instance
+     * @param   DATA    the integer to insert into this tree
+     * @return          the ROOT node of the subtree
+     */
 	private BTNode insert(BTNode node, int data) {
 		if (node == null)
 			node = new BTNode(data);
@@ -87,12 +123,19 @@ class BT {
 		return node;
 	}
 
-	/* Function to count number of nodes */
+	/* Method to count the number of nodes in the tree.
+     *
+     * @return  the integer count of the number of nodes in this tree
+     */
 	public int countNodes() {
 		return countNodes(root);
 	}
 
-	/* Function to count number of nodes recursively */
+	/* Method to count number of nodes in the tree recursively.
+     *
+     * @param   R  the ROOT BTNODE of this subtree
+     * @return     the total count of this subtree's nodes
+     */
 	private int countNodes(BTNode r) {
 		if (r == null)
 			return 0;
@@ -104,12 +147,23 @@ class BT {
 		}
 	}
 
-	/* Function to search for an element */
+	/* Method to search for an element.
+     *
+     * @param   VAL  the integer DATA value to search for in this tree
+     * @return       a boolean indicating whether or not the searched for value
+     *               was found
+     */
 	public boolean search(int val) {
 		return search(root, val);
 	}
 
-	/* Function to search for an element recursively */
+	/* Method to search for an element recursively.
+     *
+     * @param   R    the ROOT BTNODE of this subtree
+     * @param   VAL  the integer DATA value to search for
+     * @return       a boolean indicating whether or not the searched for value
+     *               was found
+     */
 	private boolean search(BTNode r, int val) {
 		if (r.getData() == val)
 			return true;
@@ -122,11 +176,15 @@ class BT {
 		return false;
 	}
 
-	/* Function for inorder traversal */
+	/* Method for inorder traversal of the tree. */
 	public void inorder() {
 		inorder(root);
 	}
 
+    /* Method for recursive inorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
 	private void inorder(BTNode r) {
 		if (r != null) {
 			inorder(r.getLeft());
@@ -135,11 +193,15 @@ class BT {
 		}
 	}
 
-	/* Function for preorder traversal */
+	/* Method for preorder traversal of the tree. */
 	public void preorder() {
 		preorder(root);
 	}
 
+    /* Method for recursive preorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
 	private void preorder(BTNode r) {
 		if (r != null) {
 			System.out.print(r.getData() + " ");
@@ -148,11 +210,15 @@ class BT {
 		}
 	}
 
-	/* Function for postorder traversal */
+	/* Method for postorder traversal of the tree. */
 	public void postorder() {
 		postorder(root);
 	}
 
+    /* Method for recursive postorder traversal of the tree.
+     *
+     * @param  R  the ROOT BTNODE of this subtree
+     */
 	private void postorder(BTNode r) {
 		if (r != null) {
 			postorder(r.getLeft());
@@ -162,48 +228,53 @@ class BT {
 	}
 }
 
-/* Class BinaryTree */
+/* Class used as a test driver for this binary tree program. */
 public class BinaryTree {
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		/* Creating object of BT */
+
+		/* Instantiating a BT object. */
 		BT bt = new BT();
+
 		/* Perform tree operations */
 		System.out.println("Binary Tree Test\n");
 		char ch;
+
 		do {
 			System.out.println("\nBinary Tree Operations\n");
 			System.out.println("1. insert ");
 			System.out.println("2. search");
 			System.out.println("3. count nodes");
-			System.out.println("4. check empty");
+			System.out.println("4. check empty\n");
 
 			int choice = scan.nextInt();
 			switch (choice) {
-			case 1:
-				System.out.println("Enter integer element to insert");
-				bt.insert(scan.nextInt());
-				break;
-			case 2:
-				System.out.println("Enter integer element to search");
-				System.out.println("Search result : " + bt.search(scan.nextInt()));
-				break;
-			case 3:
-				System.out.println("Nodes = " + bt.countNodes());
-				break;
-			case 4:
-				System.out.println("Empty status = " + bt.isEmpty());
-				break;
-			default:
-				System.out.println("Wrong Entry \n ");
-				break;
+                case 1:
+                    System.out.println("\nEnter integer element to insert");
+                    bt.insert(scan.nextInt());
+                    break;
+                case 2:
+                    System.out.println("\nEnter integer element to search");
+                    System.out.println("Search result : " + bt.search(scan.nextInt()));
+                    break;
+                case 3:
+                    System.out.println("\nNodes = " + bt.countNodes());
+                    break;
+                case 4:
+                    System.out.println("\nEmpty status = " + bt.isEmpty());
+                    break;
+                default:
+                    System.out.println("\nWrong entry \n ");
+                    break;
 			}
+
 			/* Display tree */
-			System.out.print("\nPost order : ");
+			System.out.print("\nPost-order: ");
 			bt.postorder();
-			System.out.print("\nPre order : ");
+			System.out.print("\nPre-order: ");
 			bt.preorder();
-			System.out.print("\nIn order : ");
+			System.out.print("\nIn-order: ");
 			bt.inorder();
 
 			System.out.println("\n\nDo you want to continue (Type y or n) \n");
