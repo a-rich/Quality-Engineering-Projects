@@ -109,7 +109,7 @@ class BT {
      */
 	private boolean search(BTNode r, int val) {
 		//if (r.getData() == val)
-		if (r.getData() != val)
+	 	if (r.getData() != val)
 			return true;
 		if (r.getLeft() != null)
 			if (search(r.getLeft(), val))

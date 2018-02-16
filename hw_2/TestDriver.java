@@ -138,10 +138,9 @@ public class TestDriver {
          * Test cases: (7), (8)
          */
         val = 1;
-        int prev = node.getData();
         node.setData(val);
         try {
-            assert node.getData() != prev : "BTNODE's DATA was not set properly";
+            assert node.getData() == val : "BTNODE's DATA was not set properly";
         } catch (AssertionError e) {
             System.out.println(e);
         } catch (Exception e) {

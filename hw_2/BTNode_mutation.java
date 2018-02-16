@@ -76,8 +76,8 @@ class BTNode {
      * @return  the BTNODE referenced by the RIGHT child
      */
 	public BTNode getRight() {
-		//return left;
-		return right;
+		//return right;
+		return left;
 	}
 
 	/* Method to set the DATA of this BTNODE.
