@@ -4,7 +4,7 @@
  * Author: Manish Bhojasia
  * Availability: http://www.sanfoundry.com/java-program-implement-binary-tree/
  *
- * Run tets:
+ * Run tests:
  *     Compile: `javac BTNode.java BinaryTree.java TestDriver.java`
  *     Run: `java -ea TestDriver`
  *
