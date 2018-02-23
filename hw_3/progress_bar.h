@@ -32,12 +32,6 @@ char * red_or_blue(double p, int x, int y) {
      * the shaded sector of the circle.
      */
 
-    /*
-     * Radius of the circle. Also used as the center pixel's (x,y) value when
-     * calculating HEIGHT_FROM_CENTER.
-     */
-    int r = 50;
-
     if (p <= 0) {
         /*
          * If no progress has been made, then every pixel is trivially blue.
@@ -45,6 +39,12 @@ char * red_or_blue(double p, int x, int y) {
 
         return "BLUE";
     }
+
+    /*
+     * Radius of the circle. Also used as the center pixel's (x,y) value when
+     * calculating HEIGHT_FROM_CENTER.
+     */
+    int r = 50;
 
     // Apply Pythagorean theorem to solve for the missing side at point X.
     double height_from_center = sqrt(pow(r, 2) - pow((x-r), 2));
@@ -74,7 +74,7 @@ char * red_or_blue(double p, int x, int y) {
      */
 
     double theta;
-    double hypotenuse_y(double theta, int x) {
+    double line(double theta, int x) {
         return tan(theta)*(x-50) + 50;
     }
 
@@ -84,7 +84,7 @@ char * red_or_blue(double p, int x, int y) {
          */
 
         theta = (90 - (p*360)) * M_PI / 180.0;
-        if (y >= (int)hypotenuse_y(theta, x) && x >= 50)
+        if (y >= (int) line(theta, x) && x >= 50)
             return "RED";
     } else if (p <= 0.5) {
         /*
@@ -92,7 +92,7 @@ char * red_or_blue(double p, int x, int y) {
          */
 
         theta = -((p*360) - 90) * M_PI / 180.0;
-        if (y >= (int)hypotenuse_y(theta, x) && x >= 50)
+        if (y >= (int) line(theta, x) && x >= 50)
             return "RED";
     } else if (p <= 0.75) {
         /*
@@ -100,7 +100,7 @@ char * red_or_blue(double p, int x, int y) {
          */
 
         theta = (270 - (p*360)) * M_PI / 180.0;
-        if (y <= (int)hypotenuse_y(theta, x) || x >= 50)
+        if (y <= (int) line(theta, x) || x >= 50)
             return "RED";
     } else {
         /*
@@ -108,7 +108,7 @@ char * red_or_blue(double p, int x, int y) {
          */
 
         theta = -((p*360) - 270) * M_PI / 180.0;
-        if (y <= (int)hypotenuse_y(theta, x) || x >= 50)
+        if (y <= (int) line(theta, x) || x >= 50)
             return "RED";
     }
 
