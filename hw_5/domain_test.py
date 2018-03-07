@@ -10,7 +10,7 @@ def some_unit(x, y):
     else:
         a = ((x+1)*(y+1))**(x-y)
 
-    if a >= 0:
+    if a > 0:
         return 'Positive'
     else:
-        return 'Negative'
+        return 'Non-positive'
